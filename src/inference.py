@@ -19,11 +19,11 @@ def calculate_complexity(data: pd.DataFrame, predicting=False):
     result.set_index('StudentID', inplace=True)
 
     if predicting:
-        enc = joblib.load('../models/ONE_HOT_ENCODER')
+        enc = joblib.load('models/MIN_MAX_SCALER')
     else:
         enc = MinMaxScaler()
         enc.fit(np.array(result['Complexity']).reshape(-1, 1))
-        joblib.dump(enc, '../models/MIN_MAX_SCALER')
+        joblib.dump(enc, 'models/MIN_MAX_SCALER')
 
     result['Complexity'] = enc.transform(np.array(result['Complexity']).reshape(-1, 1)) * 100
 

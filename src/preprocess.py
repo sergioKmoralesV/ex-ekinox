@@ -9,11 +9,11 @@ ONE_HOT_COLS = ['school', 'sex', 'address', 'Pstatus', 'Mjob', 'Fjob', 'reason',
 
 def encode_one_hot(df: pd.DataFrame, predicting=False):
     if predicting:
-        enc = joblib.load('../models/ONE_HOT_ENCODER')
+        enc = joblib.load('models/ONE_HOT_ENCODER')
     else:
         enc = OneHotEncoder(handle_unknown='ignore')
         enc.fit(df[ONE_HOT_COLS])
-        joblib.dump(enc, '../models/ONE_HOT_ENCODER')
+        joblib.dump(enc, 'models/ONE_HOT_ENCODER')
 
     new_cols = enc.get_feature_names_out(ONE_HOT_COLS).tolist()
     encoded = pd.DataFrame(enc.transform(df[ONE_HOT_COLS]).toarray(), columns=new_cols)
