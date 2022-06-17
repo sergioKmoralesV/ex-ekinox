@@ -2,7 +2,7 @@
 
 1. Pour utiliser l'outil, il faut au début avoir les **dépendances installées**. Exécuter:
 ```
-# Si vous voulez avoir un virtual env sur conda
+# Pour créér un virtual env sur conda
 conda create -n ekinox-ex python
 conda activate ekinox-ex
 
